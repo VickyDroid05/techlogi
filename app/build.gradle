@@ -35,6 +35,7 @@ dependencies {
     implementation rootProject.ext.libraries.volley
     implementation rootProject.ext.libraries.dagger
     annotationProcessor rootProject.ext.libraries.daggerCompiler
+    implementation rootProject.ext.libraries.viewModelExt
 
     testImplementation rootProject.ext.testLibraries.junit
     androidTestImplementation rootProject.ext.testLibraries.testRunner

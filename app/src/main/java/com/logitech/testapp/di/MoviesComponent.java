@@ -7,11 +7,12 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = MoviesModule.class)
+@Component(modules = {MoviesModule.class, ViewModelModule.class})
 public interface MoviesComponent {
 
     /**
      * Method to inject dependency
+     *
      * @param activity The MainActivity
      */
     void inject(MainActivity activity);

@@ -1,5 +1,6 @@
 package com.logitech.testapp;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ import com.logitech.testapp.app.domain.model.Movie;
 import com.logitech.testapp.app.domain.repository.MoviesRepository;
 import com.logitech.testapp.core.Failure;
 import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.viewmodel.ViewModelFactory;
+import com.logitech.testapp.viewmodel.MainActivityViewModel;
 
 import java.util.List;
 
@@ -20,11 +23,10 @@ import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivityTest";
-
-    //TODO : for testing
     @Inject
-    MoviesListUseCase mMoviesListUseCase;
+    ViewModelFactory mViewModelFactory;
+
+    private MainActivityViewModel mMainActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         ((LogitechApplication)getApplication()).getMoviesComponent().inject(this);
 
+        mMainActivityViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainActivityViewModel.class);
 
-        mMoviesListUseCase.getMovies(new UseCaseCallBack<List<Movie>>() {
-            @Override
-            public void onSuccessCallBack(List<Movie> moviesEntity) {
-                Log.d(TAG, "onSuccessCallBack: "+moviesEntity.size());
-            }
-
-            @Override
-            public void onErrorCallBack(Failure error) {
-                Log.d(TAG, "onErrorCallBack: ");
-            }
-        });
+        mMainActivityViewModel.getMovies();
     }
 }
