@@ -1,38 +1,42 @@
-package com.logitech.testapp.app.data.model;
+package com.logitech.testapp.app.domain.model;
 
-import com.google.gson.annotations.SerializedName;
+/**
+ * Created by Vigneshwaran G on 12/10/19.
+ */
+public class Movie {
 
-public class MovieEntity {
-
-    @SerializedName("Title")
     private String mTitle;
-    @SerializedName("Year")
     private String mYear;
-    @SerializedName("Rated")
     private String mRated;
-    @SerializedName("Released")
     private String mReleased;
-    @SerializedName("Runtime")
     private String mRuntime;
-    @SerializedName("Genre")
     private String mGenre;
-    @SerializedName("Director")
     private String mDirector;
-    @SerializedName("Writer")
     private String mWriter;
-    @SerializedName("Actors")
     private String mActors;
-    @SerializedName("Plot")
     private String mPlot;
-    @SerializedName("Language")
     private String mLanguage;
-    @SerializedName("Country")
     private String mCountry;
-    @SerializedName("Awards")
     private String mAwards;
 
-    public MovieEntity() {
-        // Empty constructor
+    public Movie(String mTitle, String mYear, String mRated,
+                 String mReleased, String mRuntime, String mGenre,
+                 String mDirector, String mWriter, String mActors,
+                 String mPlot, String mLanguage, String mCountry,
+                 String mAwards) {
+        this.mTitle = mTitle;
+        this.mYear = mYear;
+        this.mRated = mRated;
+        this.mReleased = mReleased;
+        this.mRuntime = mRuntime;
+        this.mGenre = mGenre;
+        this.mDirector = mDirector;
+        this.mWriter = mWriter;
+        this.mActors = mActors;
+        this.mPlot = mPlot;
+        this.mLanguage = mLanguage;
+        this.mCountry = mCountry;
+        this.mAwards = mAwards;
     }
 
     public String getTitle() {

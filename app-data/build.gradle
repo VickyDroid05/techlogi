@@ -24,9 +24,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation project(":app-domain")
     implementation project(":core")
+
     implementation rootProject.ext.libraries.gson
     implementation rootProject.ext.libraries.volley
     implementation rootProject.ext.libraries.dagger

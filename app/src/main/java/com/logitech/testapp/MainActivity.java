@@ -4,10 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.logitech.testapp.app.data.datastore.MoviesDataStoreImpl;
+import com.logitech.testapp.app.data.model.MovieEntity;
 import com.logitech.testapp.app.data.model.MoviesEntity;
 import com.logitech.testapp.app.data.network.MoviesApi;
+import com.logitech.testapp.app.domain.interactor.MoviesListUseCase;
+import com.logitech.testapp.app.domain.model.Movie;
+import com.logitech.testapp.app.domain.repository.MoviesRepository;
 import com.logitech.testapp.core.Failure;
 import com.logitech.testapp.core.UseCaseCallBack;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -15,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivityTest";
 
+    //TODO : for testing
     @Inject
-    MoviesApi moviesApi;
+    MoviesListUseCase mMoviesListUseCase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
         ((LogitechApplication)getApplication()).getMoviesComponent().inject(this);
 
 
-        moviesApi.getMoviesList(new UseCaseCallBack<MoviesEntity>() {
+        mMoviesListUseCase.getMovies(new UseCaseCallBack<List<Movie>>() {
             @Override
-            public void onSuccessCallBack(MoviesEntity moviesEntity) {
-                Log.d(TAG, "onSuccessCallBack: ");
+            public void onSuccessCallBack(List<Movie> moviesEntity) {
+                Log.d(TAG, "onSuccessCallBack: "+moviesEntity.size());
             }
 
             @Override

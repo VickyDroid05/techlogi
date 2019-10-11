@@ -24,8 +24,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     implementation project(":core")
+
+    implementation rootProject.ext.libraries.dagger
+    annotationProcessor rootProject.ext.libraries.daggerCompiler
 
     testImplementation rootProject.ext.testLibraries.junit
     androidTestImplementation rootProject.ext.testLibraries.testRunner
