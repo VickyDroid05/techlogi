@@ -29,28 +29,6 @@ import dagger.Provides;
 @Module
 public class MoviesModule {
 
-    private final Application application;
-
-    /**
-     * Init the Movies module with the application instance
-     *
-     * @param application the LogitechApplication
-     */
-    public MoviesModule(Application application) {
-        this.application = application;
-    }
-
-    /**
-     * Method to provice application context instance s
-     *
-     * @return Context
-     */
-    @Provides
-    @Singleton
-    Context application() {
-        return application.getApplicationContext();
-    }
-
     /**
      * Method to provide the Request queue for volley
      *
