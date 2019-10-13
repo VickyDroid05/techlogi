@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/iv_banner"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/movie_banner_height"
-            android:contentDescription="@null"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_about"
-            style="@style/TextViewList.Title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/default_half_padding"
-            android:textSize="@dimen/banner_title_text_size" />
+            <ImageView
+                android:id="@+id/iv_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/movie_banner_height"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_movie_detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/default_half_padding" />
+            <TextView
+                android:id="@+id/tv_about"
+                style="@style/TextViewList.Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingEnd="@dimen/zero_dp"
+                android:paddingLeft="@dimen/default_half_padding"
+                android:paddingRight="@dimen/zero_dp"
+                android:paddingStart="@dimen/default_half_padding"
+                android:textSize="@dimen/banner_title_text_size" />
 
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_movie_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/default_half_padding" />
 
-</android.support.v4.widget.NestedScrollView>
+        </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
+</layout>
