@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -21,6 +22,7 @@ import com.logitech.testapp.R;
 import com.logitech.testapp.core.error.Failure;
 import com.logitech.testapp.core.view.BaseActivity;
 import com.logitech.testapp.core.viewmodel.ViewModelFactory;
+import com.logitech.testapp.databinding.ActivityMovieDetailBinding;
 import com.logitech.testapp.model.KeyValueModel;
 import com.logitech.testapp.model.MovieModel;
 import com.logitech.testapp.scenes.detail.adapter.MovieDetailListAdapter;
@@ -38,6 +40,8 @@ public class MovieDetailActivity extends BaseActivity {
     @Inject
     ViewModelFactory mViewModelFactory;
 
+    private ActivityMovieDetailBinding mViewBinding;
+
     private MovieDetailViewModel mDetailViewModel;
     MovieDetailListAdapter mMovieDetailListAdapter;
     private int mMovieId;
@@ -54,13 +58,11 @@ public class MovieDetailActivity extends BaseActivity {
     }
 
     /**
-     * Method to get the activity view
-     *
-     * @return The Activity view
+     * Method to init the content view for the activity
      */
     @Override
-    protected int getContentView() {
-        return R.layout.activity_movie_detail;
+    protected void initContentView() {
+        mViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_movie_detail);
     }
 
     /**
@@ -87,10 +89,6 @@ public class MovieDetailActivity extends BaseActivity {
         this.mDetailViewModel.getMovieDetail(mMovieId);
     }
 
-    private RecyclerView mRvMovieDetails;
-    private ImageView mIvBanner;
-    private TextView mTvTitle;
-
     /**
      * Method to initialize views
      */
@@ -100,14 +98,10 @@ public class MovieDetailActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        mRvMovieDetails = findViewById(R.id.rv_movie_detail);
-        mIvBanner = findViewById(R.id.iv_banner);
-        mTvTitle = findViewById(R.id.tv_about);
-
         configureListView();
 
         mMovieDetailListAdapter = new MovieDetailListAdapter(new ArrayList<KeyValueModel>());
-        mRvMovieDetails.setAdapter(mMovieDetailListAdapter);
+        mViewBinding.rvMovieDetail.setAdapter(mMovieDetailListAdapter);
     }
 
     /**
@@ -151,10 +145,10 @@ public class MovieDetailActivity extends BaseActivity {
      */
     private void configureListView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        mRvMovieDetails.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRvMovieDetails.getContext(),
+        mViewBinding.rvMovieDetail.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mViewBinding.rvMovieDetail.getContext(),
                 linearLayoutManager.getOrientation());
-        mRvMovieDetails.addItemDecoration(dividerItemDecoration);
+        mViewBinding.rvMovieDetail.addItemDecoration(dividerItemDecoration);
     }
 
     /**
@@ -164,12 +158,12 @@ public class MovieDetailActivity extends BaseActivity {
      */
     private void updateBannerTitle(MovieModel movieModel) {
         setTitle(movieModel.getTitle());
-        mTvTitle.setText(getString(R.string.about_movie).concat(" : ").concat(movieModel.getTitle()));
+        mViewBinding.tvAbout.setText(getString(R.string.about_movie).concat(" : ").concat(movieModel.getTitle()));
         Glide.with(getApplicationContext())
                 .load(!TextUtils.isEmpty(movieModel.getPoster()) ? movieModel.getPoster() : "")
                 .apply(RequestOptions.placeholderOf(R.drawable.placeholder_small)
                         .error(R.drawable.placeholder_small))
-                .into(mIvBanner);
+                .into(mViewBinding.ivBanner);
     }
 
     /**

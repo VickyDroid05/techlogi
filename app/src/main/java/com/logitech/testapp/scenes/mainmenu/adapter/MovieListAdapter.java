@@ -1,29 +1,29 @@
 package com.logitech.testapp.scenes.mainmenu.adapter;
 
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.logitech.testapp.R;
+import com.logitech.testapp.databinding.ItemMovieBinding;
 import com.logitech.testapp.model.MovieModel;
 
 import java.util.List;
 
 /**
  * Created by Vigneshwaran G on 13/10/19.
- * //TODO : Should migrate to ViewBinding, update Studio version
  */
-public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyViewHolder> {
+public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
 
     private List<MovieModel> moviesList;
     private MovieListClickListener mListener;
+    private ItemMovieBinding mViewBinding;
 
     public MovieListAdapter(List<MovieModel> moviesList) {
         this.moviesList = moviesList;
@@ -31,42 +31,41 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_movie, parent, false);
+    public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        mViewBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.item_movie, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MovieViewHolder(mViewBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         MovieModel movie = moviesList.get(position);
         holder.setValues(movie);
     }
-
 
     @Override
     public int getItemCount() {
         return moviesList.size();
     }
 
+    /**
+     * Method to update the latest list to recycler view
+     *
+     * @param movieModels The movie models
+     */
     public void updateList(List<MovieModel> movieModels) {
         this.moviesList = movieModels;
         notifyDataSetChanged();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
-        public ImageView ivPoster;
+    public class MovieViewHolder extends RecyclerView.ViewHolder {
 
-        public MyViewHolder(View view) {
-            super(view);
-            ivPoster = view.findViewById(R.id.iv_movie_poster);
-            title = view.findViewById(R.id.tv_movie_title);
-            genre = view.findViewById(R.id.tv_movie_description);
-            year = view.findViewById(R.id.tv_movie_description2);
+        private MovieViewHolder(ItemMovieBinding viewBinding) {
+            super(viewBinding.getRoot());
+            mViewBinding = viewBinding;
 
-            view.setOnClickListener(new View.OnClickListener() {
+            mViewBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (mListener != null) {
@@ -76,31 +75,53 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MyVi
             });
         }
 
+        /**
+         * Method to the set the value to view
+         *
+         * @param movieModel The Movie Model
+         */
         public void setValues(MovieModel movieModel) {
-            Glide.with(ivPoster)
+            Glide.with(mViewBinding.ivMoviePoster)
                     .load(movieModel.getPoster())
                     .apply(RequestOptions.placeholderOf(R.drawable.placeholder_small)
                             .error(R.drawable.placeholder_small))
-                    .into(ivPoster);
+                    .into(mViewBinding.ivMoviePoster);
             if (!TextUtils.isEmpty(movieModel.getTitle())) {
-                title.setText(movieModel.getTitle());
+                mViewBinding.tvMovieTitle.setText(movieModel.getTitle());
             }
             if (!TextUtils.isEmpty(movieModel.getLanguage())) {
-                genre.setText(movieModel.getLanguage());
+                mViewBinding.tvLanguage.setText(movieModel.getLanguage());
             }
             if (!TextUtils.isEmpty(movieModel.getGenre())) {
-                year.setText(movieModel.getGenre());
+                mViewBinding.tvGenre.setText(movieModel.getGenre());
             }
-
         }
     }
 
+    /**
+     * Method to set the movie click listener
+     *
+     * @param listener The Listener
+     */
     public void setMovieListClickListener(MovieListClickListener listener) {
         this.mListener = listener;
     }
 
+    /**
+     * Listener for click item of movie list
+     */
     public interface MovieListClickListener {
         void onItemClicked(int id);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
 }

@@ -75,7 +75,7 @@ public class MovieDetailBuilder {
      * @param description The Description
      * @return The KeyValue Model
      */
-    private static KeyValueModel transform(String title, String description) {
+    private static KeyValueModel transform(String description, String title) {
         return new KeyValueModel(title, description);
     }
 

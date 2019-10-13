@@ -2,6 +2,8 @@ package com.logitech.testapp.scenes.mainmenu.view;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +16,7 @@ import com.logitech.testapp.R;
 import com.logitech.testapp.core.error.Failure;
 import com.logitech.testapp.core.view.BaseActivity;
 import com.logitech.testapp.core.viewmodel.ViewModelFactory;
+import com.logitech.testapp.databinding.ActivityMainBinding;
 import com.logitech.testapp.model.MovieModel;
 import com.logitech.testapp.scenes.detail.view.MovieDetailActivity;
 import com.logitech.testapp.scenes.mainmenu.adapter.MovieListAdapter;
@@ -29,17 +32,17 @@ public class MainActivity extends BaseActivity implements MovieListAdapter.Movie
     @Inject
     ViewModelFactory mViewModelFactory;
 
+    private ActivityMainBinding mViewBinding;
+
     private MainActivityViewModel mMainActivityViewModel;
     private MovieListAdapter mMovieListAdapter;
 
     /**
-     * Method to get the activity view
-     *
-     * @return The Activity view
+     * Method to init the content view for the activity
      */
     @Override
-    protected int getContentView() {
-        return R.layout.activity_main;
+    protected void initContentView() {
+        mViewBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
 
     /**
@@ -93,27 +96,19 @@ public class MainActivity extends BaseActivity implements MovieListAdapter.Movie
         this.mMainActivityViewModel.getLoadingProgressLiveData().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean show) {
-                mProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+                mViewBinding.prgBar.setVisibility(show ? View.VISIBLE : View.GONE);
             }
         });
     }
-
-
-    //TODO : Can be removed onece binding is implemented
-    private RecyclerView rvMovies;
-    private ProgressBar mProgressBar;
-
     /**
      * Method to initialize views
      */
     @Override
     protected void initView() {
-        rvMovies = findViewById(R.id.rv_movies);
-        mProgressBar = findViewById(R.id.prg_bar);
-        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+        mViewBinding.rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         mMovieListAdapter = new MovieListAdapter(new ArrayList<MovieModel>());
-        rvMovies.setAdapter(mMovieListAdapter);
+        mViewBinding.rvMovies.setAdapter(mMovieListAdapter);
         mMovieListAdapter.setMovieListClickListener(this);
 
     }

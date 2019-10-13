@@ -17,8 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentView());
 
+        initContentView();
         initDaggerComponents();
         initArguments();
         initView();
@@ -27,13 +27,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initLoad();
     }
 
-
     /**
-     * Method to get the activity view
-     *
-     * @return The Activity view
+     * Method to init Content view for the activity
      */
-    protected abstract int getContentView();
+    protected abstract void initContentView();
 
     /**
      * Method to initDagger components
