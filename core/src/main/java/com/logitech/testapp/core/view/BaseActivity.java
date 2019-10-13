@@ -1,7 +1,6 @@
 package com.logitech.testapp.core.view;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -21,8 +20,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getContentView());
 
         initDaggerComponents();
-        initView();
         initArguments();
+        initView();
         initViewModel();
         initObservers();
         initLoad();
@@ -69,7 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Method to show error toast message
      *
-     * @param errorMessage
+     * @param errorMessage The Error message
      */
     protected void showErrorToast(String errorMessage) {
         Toast.makeText(this, !TextUtils.isEmpty(errorMessage) ? errorMessage : getString(R.string.generic_error), Toast.LENGTH_SHORT).show();
