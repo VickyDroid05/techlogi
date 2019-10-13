@@ -53,10 +53,14 @@ public class MovieDetailActivity extends BaseActivity {
                 .putExtra(MoviePresentationConstants.BUNDLE_MOVIE_ID, movieId);
     }
 
+    /**
+     * Method to get the activity view
+     *
+     * @return The Activity view
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_detail);
+    protected int getContentView() {
+        return R.layout.activity_movie_detail;
     }
 
     /**

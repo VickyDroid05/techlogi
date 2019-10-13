@@ -32,10 +32,14 @@ public class MainActivity extends BaseActivity implements MovieListAdapter.Movie
     private MainActivityViewModel mMainActivityViewModel;
     private MovieListAdapter mMovieListAdapter;
 
+    /**
+     * Method to get the activity view
+     *
+     * @return The Activity view
+     */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getContentView() {
+        return R.layout.activity_main;
     }
 
     /**

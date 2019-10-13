@@ -14,9 +14,11 @@ import com.logitech.testapp.core.R;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(getContentView());
 
         initDaggerComponents();
         initView();
@@ -24,8 +26,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         initViewModel();
         initObservers();
         initLoad();
-
     }
+
+
+    /**
+     * Method to get the activity view
+     *
+     * @return The Activity view
+     */
+    protected abstract int getContentView();
 
     /**
      * Method to initDagger components
@@ -60,7 +69,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * Method to show error toast message
      *
-     * @param errorMessage The Error message
+     * @param errorMessage
      */
     protected void showErrorToast(String errorMessage) {
         Toast.makeText(this, !TextUtils.isEmpty(errorMessage) ? errorMessage : getString(R.string.generic_error), Toast.LENGTH_SHORT).show();
