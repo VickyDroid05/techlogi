@@ -2,7 +2,9 @@ package com.logitech.testapp.app.domain.interactor;
 
 import com.logitech.testapp.app.domain.model.Movie;
 import com.logitech.testapp.app.domain.repository.MoviesRepository;
-import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.callback.UseCaseCallBack;
+
+import javax.inject.Inject;
 
 /**
  * Created by Vigneshwaran G on 12/10/19.
@@ -11,6 +13,7 @@ public class MovieDetailUseCaseImpl implements MovieDetailUseCase {
 
     private MoviesRepository mMovieRepository;
 
+    @Inject
     public MovieDetailUseCaseImpl(MoviesRepository moviesRepository) {
         this.mMovieRepository = moviesRepository;
     }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">core</string>
+    <string name="generic_error">Unable to Process your request at this time. Please try again later</string>
 </resources>

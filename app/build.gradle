@@ -31,10 +31,15 @@ dependencies {
 
     implementation rootProject.ext.libraries.appCompat
     implementation rootProject.ext.libraries.constraintLayout
+    implementation rootProject.ext.libraries.recyclerView
+    implementation rootProject.ext.libraries.cardView
+    implementation rootProject.ext.libraries.glide
     implementation rootProject.ext.libraries.gson
     implementation rootProject.ext.libraries.volley
     implementation rootProject.ext.libraries.dagger
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     annotationProcessor rootProject.ext.libraries.daggerCompiler
+//    annotationProcessor rootProject.ext.libraries.glideCompiler
     implementation rootProject.ext.libraries.viewModelExt
 
     testImplementation rootProject.ext.testLibraries.junit

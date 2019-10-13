@@ -1,7 +1,7 @@
 package com.logitech.testapp.app.domain.interactor;
 
 import com.logitech.testapp.app.domain.model.Movie;
-import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.callback.UseCaseCallBack;
 
 /**
  * Created by Vigneshwaran G on 12/10/19.

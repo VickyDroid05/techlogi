@@ -30,6 +30,8 @@ public class MovieEntity {
     private String mCountry;
     @SerializedName("Awards")
     private String mAwards;
+    @SerializedName("Poster")
+    private String mPoster;
 
     public MovieEntity() {
         // Empty constructor
@@ -85,5 +87,9 @@ public class MovieEntity {
 
     public String getAwards() {
         return mAwards;
+    }
+
+    public String getPoster() {
+        return mPoster;
     }
 }

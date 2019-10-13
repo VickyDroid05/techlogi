@@ -2,9 +2,12 @@ package com.logitech.testapp.di;
 
 import android.arch.lifecycle.ViewModel;
 
+import com.logitech.testapp.app.domain.interactor.MovieDetailUseCase;
 import com.logitech.testapp.app.domain.interactor.MoviesListUseCase;
 import com.logitech.testapp.core.viewmodel.ViewModelFactory;
-import com.logitech.testapp.viewmodel.MainActivityViewModel;
+import com.logitech.testapp.mapper.MovieDomainToModelMapper;
+import com.logitech.testapp.scenes.detail.viewmodel.MovieDetailViewModel;
+import com.logitech.testapp.scenes.mainmenu.viewmodel.MainActivityViewModel;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -38,7 +41,16 @@ public class ViewModelModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainActivityViewModel.class)
-    ViewModel MainActivityViewModel(MoviesListUseCase moviesListUseCase) {
-        return new MainActivityViewModel(moviesListUseCase);
+    ViewModel MainActivityViewModel(MoviesListUseCase moviesListUseCase,
+                                    MovieDomainToModelMapper domainToModelMapper) {
+        return new MainActivityViewModel(moviesListUseCase,domainToModelMapper);
+    }
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(MovieDetailViewModel.class)
+    ViewModel MovieDetailViewModel(MovieDetailUseCase movieDetailUseCase,
+                                    MovieDomainToModelMapper domainToModelMapper) {
+        return new MovieDetailViewModel(movieDetailUseCase,domainToModelMapper);
     }
 }

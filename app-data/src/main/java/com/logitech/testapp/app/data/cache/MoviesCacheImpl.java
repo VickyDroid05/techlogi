@@ -31,7 +31,9 @@ public class MoviesCacheImpl implements MoviesCache {
 
     @Override
     public void clearCache() {
-        this.mMoviesMap.clear();
+        if (this.mMoviesMap != null) {
+            this.mMoviesMap.clear();
+        }
         this.mMoviesMap = null;
     }
 }
