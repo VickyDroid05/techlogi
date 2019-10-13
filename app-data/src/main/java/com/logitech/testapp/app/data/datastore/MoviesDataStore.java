@@ -1,8 +1,7 @@
 package com.logitech.testapp.app.data.datastore;
 
 import com.logitech.testapp.app.data.model.MovieEntity;
-import com.logitech.testapp.app.data.model.MoviesEntity;
-import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.callback.UseCaseCallBack;
 
 import java.util.List;
 

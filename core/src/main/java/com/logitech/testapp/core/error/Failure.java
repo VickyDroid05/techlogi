@@ -1,4 +1,4 @@
-package com.logitech.testapp.core;
+package com.logitech.testapp.core.error;
 
 public class Failure {
 

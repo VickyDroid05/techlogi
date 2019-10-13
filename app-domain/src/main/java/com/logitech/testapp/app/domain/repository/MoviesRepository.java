@@ -1,7 +1,7 @@
 package com.logitech.testapp.app.domain.repository;
 
 import com.logitech.testapp.app.domain.model.Movie;
-import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.callback.UseCaseCallBack;
 
 import java.util.List;
 

@@ -43,7 +43,7 @@ public class MoviesDataToDomainMapper {
                 movieEntity.getRated(), movieEntity.getReleased(), movieEntity.getRuntime(),
                 movieEntity.getGenre(), movieEntity.getDirector(), movieEntity.getWriter(),
                 movieEntity.getActors(), movieEntity.getPlot(), movieEntity.getLanguage(),
-                movieEntity.getCountry(), movieEntity.getAwards());
+                movieEntity.getCountry(), movieEntity.getAwards(), movieEntity.getPoster());
     }
 
 

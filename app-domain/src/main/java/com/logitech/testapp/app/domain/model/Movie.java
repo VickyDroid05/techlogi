@@ -18,12 +18,13 @@ public class Movie {
     private String mLanguage;
     private String mCountry;
     private String mAwards;
+    private String mPoster;
 
     public Movie(String mTitle, String mYear, String mRated,
                  String mReleased, String mRuntime, String mGenre,
                  String mDirector, String mWriter, String mActors,
                  String mPlot, String mLanguage, String mCountry,
-                 String mAwards) {
+                 String mAwards, String mPoster) {
         this.mTitle = mTitle;
         this.mYear = mYear;
         this.mRated = mRated;
@@ -37,6 +38,7 @@ public class Movie {
         this.mLanguage = mLanguage;
         this.mCountry = mCountry;
         this.mAwards = mAwards;
+        this.mPoster = mPoster;
     }
 
     public String getTitle() {
@@ -89,5 +91,9 @@ public class Movie {
 
     public String getAwards() {
         return mAwards;
+    }
+
+    public String getPoster() {
+        return mPoster;
     }
 }

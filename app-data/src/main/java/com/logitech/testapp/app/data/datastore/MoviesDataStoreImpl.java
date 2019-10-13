@@ -5,8 +5,8 @@ import com.logitech.testapp.app.data.model.MovieEntity;
 import com.logitech.testapp.app.data.model.MoviesEntity;
 import com.logitech.testapp.app.data.network.MoviesApi;
 import com.logitech.testapp.app.data.utils.MovieDataConstants;
-import com.logitech.testapp.core.Failure;
-import com.logitech.testapp.core.UseCaseCallBack;
+import com.logitech.testapp.core.error.Failure;
+import com.logitech.testapp.core.callback.UseCaseCallBack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
