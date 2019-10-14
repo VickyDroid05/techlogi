@@ -5,11 +5,11 @@ import com.logitech.testapp.app.data.model.MovieEntity;
 import com.logitech.testapp.app.data.model.MoviesEntity;
 import com.logitech.testapp.app.data.network.MoviesApi;
 import com.logitech.testapp.app.data.utils.MovieDataConstants;
-import com.logitech.testapp.core.error.Failure;
 import com.logitech.testapp.core.callback.UseCaseCallBack;
+import com.logitech.testapp.core.error.Failure;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -101,7 +101,7 @@ public class MoviesDataStoreImpl implements MoviesDataStore {
      * @param moviesEntity The MoviesEntity
      */
     private void cacheMoviesListWithId(MoviesEntity moviesEntity) {
-        Map<Integer, MovieEntity> moviesMap = new HashMap<>();
+        Map<Integer, MovieEntity> moviesMap = new LinkedHashMap<>();
         for (int id = 0; id < moviesEntity.getMoviesList().size(); id++) {
             moviesMap.put(id, moviesEntity.getMoviesList().get(id));
         }

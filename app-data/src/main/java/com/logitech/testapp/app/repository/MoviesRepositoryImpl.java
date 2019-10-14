@@ -5,8 +5,8 @@ import com.logitech.testapp.app.data.mapper.MoviesDataToDomainMapper;
 import com.logitech.testapp.app.data.model.MovieEntity;
 import com.logitech.testapp.app.domain.model.Movie;
 import com.logitech.testapp.app.domain.repository.MoviesRepository;
-import com.logitech.testapp.core.error.Failure;
 import com.logitech.testapp.core.callback.UseCaseCallBack;
+import com.logitech.testapp.core.error.Failure;
 
 import java.util.List;
 

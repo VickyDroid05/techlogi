@@ -26,7 +26,7 @@
             <TextView
                 android:id="@+id/tv_movie_title"
                 style="@style/TextViewList.Title"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/zero_dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintLeft_toRightOf="@id/iv_movie_poster"
@@ -37,7 +37,7 @@
             <TextView
                 android:id="@+id/tv_language"
                 style="@style/TextViewList.Description"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/zero_dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintLeft_toRightOf="@id/iv_movie_poster"
@@ -48,7 +48,7 @@
             <TextView
                 android:id="@+id/tv_genre"
                 style="@style/TextViewList.Description"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/zero_dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/default_half_padding"
                 app:layout_constraintBottom_toBottomOf="parent"
