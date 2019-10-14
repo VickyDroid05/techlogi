@@ -28,6 +28,7 @@ dependencies {
     implementation rootProject.ext.libraries.appCompat
     implementation rootProject.ext.libraries.viewModelExt
     implementation rootProject.ext.libraries.dagger
+    implementation rootProject.ext.libraries.volley
     annotationProcessor rootProject.ext.libraries.daggerCompiler
 
     testImplementation rootProject.ext.testLibraries.junit

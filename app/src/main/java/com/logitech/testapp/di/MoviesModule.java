@@ -30,18 +30,6 @@ import dagger.Provides;
 public class MoviesModule {
 
     /**
-     * Method to provide the Request queue for volley
-     *
-     * @param context The Context
-     * @return The Request Queue
-     */
-    @Provides
-    @Singleton
-    public RequestQueue providesVolleyRequestQueue(Context context) {
-        return Volley.newRequestQueue(context);
-    }
-
-    /**
      * Method to provide Movies Api Instance
      *
      * @param requestQueue The Volley Request queue
