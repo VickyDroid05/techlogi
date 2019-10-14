@@ -33,6 +33,8 @@ dependencies {
     annotationProcessor rootProject.ext.libraries.daggerCompiler
 
     testImplementation rootProject.ext.testLibraries.junit
+    testImplementation rootProject.ext.testLibraries.roboElectric
+    testImplementation rootProject.ext.testLibraries.mockito
     androidTestImplementation rootProject.ext.testLibraries.testRunner
     androidTestImplementation rootProject.ext.testLibraries.espresso
 }

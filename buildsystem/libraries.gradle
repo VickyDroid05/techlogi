@@ -15,6 +15,8 @@ ext {
 
     //Test
     jUnitVersion = '4.12'
+    roboElectricVersion = '3.3.2'
+    mockitoVersion = '2.7.22'
     testRunnerVersion = '1.0.2'
     espressoVersion = '3.0.2'
 
@@ -36,8 +38,10 @@ ext {
     ]
 
     testLibraries = [
-            junit     : "junit:junit:${jUnitVersion}",
-            testRunner: "com.android.support.test:runner:${testRunnerVersion}",
-            espresso  : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
+            junit       : "junit:junit:${jUnitVersion}",
+            roboElectric: "org.robolectric:robolectric:${roboElectricVersion}",
+            mockito     : "org.mockito:mockito-core:${mockitoVersion}",
+            testRunner  : "com.android.support.test:runner:${testRunnerVersion}",
+            espresso    : "com.android.support.test.espresso:espresso-core:${espressoVersion}",
     ]
 }

@@ -24,14 +24,12 @@ import javax.inject.Inject;
  */
 public class MoviesMockDataStoreImpl implements MoviesDataStore {
 
-    private MoviesApi mMoviesApi;
     private MoviesCache mMoviesCache;
     private Context mContext;
 
     @Inject
-    public MoviesMockDataStoreImpl(Context context, MoviesApi moviesApi, MoviesCache moviesCache) {
+    public MoviesMockDataStoreImpl(Context context, MoviesCache moviesCache) {
         this.mContext = context;
-        this.mMoviesApi = moviesApi;
         this.mMoviesCache = moviesCache;
     }
 
