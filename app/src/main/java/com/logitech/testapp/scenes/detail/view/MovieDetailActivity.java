@@ -94,10 +94,7 @@ public class MovieDetailActivity extends BaseActivity {
      */
     @Override
     protected void initView() {
-        if (null != getSupportActionBar()) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-
+        initToolbar();
         configureListView();
 
         mMovieDetailListAdapter = new MovieDetailListAdapter(new ArrayList<KeyValueModel>());
@@ -137,6 +134,15 @@ public class MovieDetailActivity extends BaseActivity {
     protected void initArguments() {
         if (getIntent().getExtras() != null && getIntent().getExtras().containsKey(MoviePresentationConstants.BUNDLE_MOVIE_ID)) {
             mMovieId = getIntent().getExtras().getInt(MoviePresentationConstants.BUNDLE_MOVIE_ID);
+        }
+    }
+
+    /**
+     * Method to init toolbar with back button
+     */
+    private void initToolbar() {
+        if (null != getSupportActionBar()) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 

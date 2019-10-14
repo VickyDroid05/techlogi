@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">LogitechTest</string>
     <string name="dummy_text">Dummy text</string>
+    <string name="dummy_text_large">Dummy text Dummy text Dummy text Dummy text Dummy text Dummy text Dummy text Dummy text Dummy text Dummy text Dummy textDummy text Dummy text </string>
     <string name="about_movie">About </string>
 
     <!-- titles -->
